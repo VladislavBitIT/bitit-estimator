@@ -1,0 +1,25 @@
+# Рабочие данные, исходники клиента, результаты и локальные настройки.
+data/
+private/
+exports/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.json
+*.db
+*.sqlite*
+*.pdf
+*.docx
+*.zip
+.env
+.env.*
+
+# Служебные файлы Python и редакторов.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
