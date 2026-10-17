@@ -7,6 +7,7 @@ exports/
 *.xlsx
 *.xls
 *.json
+!settings.example.json
 *.db
 *.sqlite*
 *.pdf
