@@ -3,11 +3,11 @@ import requests
 import telebot
 
 # Читаем настройки, прошлые проекты и инструкцию для нейросети.
-with open("private/simple_settings.json", encoding="utf-8") as file:
+with open("private/bot_settings.json", encoding="utf-8") as file:
     settings = json.load(file)
-with open("private/simple_projects.txt", encoding="utf-8") as file:
+with open("private/projects.txt", encoding="utf-8") as file:
     projects = file.read()
-with open("simple_prompt.txt", encoding="utf-8") as file:
+with open("prompt.txt", encoding="utf-8") as file:
     instructions = file.read()
 
 if not settings["telegram_bot_token"]:
@@ -47,7 +47,7 @@ def reply(message):
         answer = choice["message"]["content"]
         if choice["finish_reason"] != "stop" or not answer:
             raise ValueError("Нейросеть не закончила ответ.")
-        with open("private/simple_answers.txt", "a", encoding="utf-8") as file:
+        with open("private/answers.txt", "a", encoding="utf-8") as file:
             file.write("\nТЗ:\n" + message.text + "\nОтвет:\n" + answer + "\n")
         # Длинный ответ отправляем частями, чтобы он поместился в Telegram.
         for start in range(0, len(answer), 2000):
