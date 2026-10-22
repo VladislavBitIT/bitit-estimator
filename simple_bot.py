@@ -11,7 +11,7 @@ with open("simple_prompt.txt", encoding="utf-8") as file:
     instructions = file.read()
 
 if not settings["telegram_bot_token"]:
-    raise SystemExit("Впиши токен Telegram в private/simple_settings.json.")
+    raise SystemExit("Не указан токен Telegram.")
 bot = telebot.TeleBot(settings["telegram_bot_token"], threaded=False)
 
 
