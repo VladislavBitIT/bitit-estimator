@@ -8,6 +8,7 @@ exports/
 *.xls
 *.json
 !settings.example.json
+!simple_settings.example.json
 *.db
 *.sqlite*
 *.pdf
