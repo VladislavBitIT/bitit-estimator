@@ -7,7 +7,6 @@ exports/
 *.xlsx
 *.xls
 *.json
-!bot_settings.example.json
 *.db
 *.sqlite*
 *.pdf
