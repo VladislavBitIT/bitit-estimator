@@ -76,7 +76,10 @@ def reply(message):
         with open("private/answers.txt", "a", encoding="utf-8") as file:
             file.write("\nТЗ:\n" + message.text + "\nОтвет:\n" + answer + "\n")
     except requests.HTTPError as error:
-        bot.send_message(message.chat.id, "OpenRouter: HTTP " + str(error.response.status_code) + ". Проверьте ключ, баланс или лимит запросов.")
+        if error.response.status_code == 429:
+            bot.send_message(message.chat.id, "OpenRouter: HTTP 429. Сервис ограничил запросы к модели. Попробуйте позже или выберите другую модель.")
+        else:
+            bot.send_message(message.chat.id, "OpenRouter: HTTP " + str(error.response.status_code) + ". Проверьте ключ, баланс или доступность модели.")
     except (json.JSONDecodeError, KeyError, IndexError, TypeError):
         bot.send_message(message.chat.id, "Некорректны настройки или формат ответа OpenRouter.")
     except requests.RequestException:
