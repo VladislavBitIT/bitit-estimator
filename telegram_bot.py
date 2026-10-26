@@ -90,7 +90,7 @@ def reply(message):
         bot.send_message(message.chat.id, "Ответ получен, но его не удалось записать в private/answers.txt. Проверьте доступ к файлу.")
     if answer:
         for start in range(0, len(answer), MESSAGE_CHUNK_SIZE):
-            bot.send_message(message.chat.id, answer[start:start + MESSAGE_CHUNK_SIZE])
+            bot.send_message(message.chat.id, answer[start:start + MESSAGE_CHUNK_SIZE], parse_mode="HTML")
 
 
 bot.register_message_handler(reply, content_types=["text"])
